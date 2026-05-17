@@ -1,0 +1,26 @@
+{
+  "name": "ROS2 Jazzy + Gazebo",
+  "build": {
+    "dockerfile": "./Dockerfile",
+    "context": "./"
+  },
+  "forwardPorts": [6080, 5900],
+  "portsAttributes": {
+    "6080": {
+      "label": "noVNC Desktop",
+      "onAutoForward": "openBrowser"
+    }
+  },
+  "postCreateCommand": "bash .devcontainer/setup.sh",
+  "remoteUser": "root",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.cpptools",
+        "ms-python.python",
+        "ms-iot.vscode-ros",
+        "twxs.cmake"
+      ]
+    }
+  }
+}
