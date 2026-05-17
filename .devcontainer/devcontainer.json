@@ -11,15 +11,14 @@
       "onAutoForward": "openBrowser"
     }
   },
-  "postCreateCommand": "bash .devcontainer/setup.sh",
+  "postCreateCommand": "bash /workspaces/ros2_gazebo_codespace/.devcontainer/setup.sh",
   "remoteUser": "root",
   "customizations": {
     "vscode": {
       "extensions": [
         "ms-vscode.cpptools",
         "ms-python.python",
-        "ms-iot.vscode-ros",
-        "twxs.cmake"
+        "ms-iot.vscode-ros"
       ]
     }
   }
