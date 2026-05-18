@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+
+<robot name="car" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+
+<xacro:include filename="material.xacro" />
+<xacro:include filename="mobile.links.xacro" />
+<xacro:include filename="arm.links.xacro" />
+<xacro:include filename="camera.xacro" />
+
+<xacro:include filename="gazebo.plugin.xacro" />
+
+</robot>
