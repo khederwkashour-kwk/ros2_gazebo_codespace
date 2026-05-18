@@ -15,12 +15,14 @@
   "remoteUser": "root",
   "customizations": {
     "vscode": {
-"extensions": [
-    "ms-vscode.cpptools",
-    "ms-python.python",
-    "ms-vscode.cmake-tools",
-    "nonanonno.vscode-ros2"
-]
+      "extensions": [
+        "ms-vscode.cpptools",
+        "ms-python.python",
+        "ms-iot.vscode-ros"
+      ],
+      "settings": {
+        "ros.distro": "jazzy"
+      }
     }
   }
 }
