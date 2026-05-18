@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org">
+
+    <!-- إعدادات الاحتكاك لعجلة التوازن (العجلة الوسطى) -->
+    <gazebo reference="center_wheel_link">
+        <mu1 value="0.1" />
+        <mu2 value="0.1" />
+    </gazebo>
+
+    <!-- نظام القيادة التفاضلية (حركة القاعدة المتنقلة) -->
+    <gazebo>
+        <plugin 
+            filename="gz-sim-diff-drive-system" 
+            name="gz::sim::systems::DiffDrive">
+            <left_joint>base_left</left_joint>
+            <right_joint>base_right</right_joint>
+            <wheel_separation>0.45</wheel_separation>
+            <wheel_radius>0.1</wheel_radius>
+            <frame_id>odom</frame_id>
+            <child_frame_id>base_footprint</child_frame_id>
+        </plugin>
+    </gazebo>
+
+    <!-- ناشر حالات المفاصل (نشر زوايا وحركة جميع المفاصل) -->
+    <gazebo>
+        <plugin 
+            filename="gz-sim-joint-state-publisher-system" 
+            name="gz::sim::systems::JointStatePublisher">
+            <joint_name>base_left</joint_name>
+            <joint_name>base_right</joint_name>
+            <joint_name>forearm_hand</joint_name>
+            <joint_name>armbase_forearm</joint_name>
+        </plugin>
+    </gazebo>
+   
+    <!-- متحكم الموقع للمفصل الأول للذراع (المعامل P = 5.0) -->
+    <gazebo>
+        <plugin
+            filename="gz-sim-joint-position-controller-system"
+            name="gz::sim::systems::JointPositionController">
+            <joint_name>forearm_hand</joint_name>
+            <p_gain>3.0</p_gain>
+          
+        </plugin>
+    </gazebo>
+
+    <!-- متحكم الموقع للمفصل الثاني للذراع (المعامل P = 3.0) -->
+    <gazebo>
+        <plugin
+            filename="gz-sim-joint-position-controller-system"
+            name="gz::sim::systems::JointPositionController">
+            <joint_name>armbase_forearm</joint_name>
+            <p_gain>5.0</p_gain>
+           
+        </plugin>
+    </gazebo>
+
+</robot>
